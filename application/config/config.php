@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,15 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+
+	$ht = "https://";
+} else {
+	$ht = "http://";
+}
+$config['base_url'] = $ht . $_SERVER['HTTP_HOST'];
+$config['base_url'] .= preg_replace('@/+$@', '', dirname($_SERVER['SCRIPT_NAME'])) . '/';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +34,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
