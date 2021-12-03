@@ -1,5 +1,4 @@
 <?php
-define('MEMBER_FIRST_CODE', 11);
 /**
  * CodeIgniter
  *
